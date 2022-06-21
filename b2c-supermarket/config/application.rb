@@ -9,6 +9,8 @@ Bundler.require(*Rails.groups)
 module B2cSupermarket
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.autoload_paths += %W[#{Rails.root}/lib]
+
     config.generators do |generator|
       generator.assets false
       generator.test_framework false
