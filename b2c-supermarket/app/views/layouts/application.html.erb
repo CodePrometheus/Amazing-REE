@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>B2cSupermarket</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>B2cSupermarket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= yield :stylesheets %>
+</head>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  </head>
+<body>
+<%= render 'layouts/menu' %>
+<div class="container">
+  <% unless flash[:notice].blank? %>
+    <div class="alert alert-info">
+      <%= flash[:notice] %>
+    </div>
+  <% end -%>
+  <%= yield %>
+</div>
 
-  <body>
-    <%= yield %>
-  </body>
+<%= javascript_include_tag 'application' %>
+<%= yield :javascripts %>
+</body>
 </html>
