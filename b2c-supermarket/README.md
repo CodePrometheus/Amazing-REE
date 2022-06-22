@@ -24,4 +24,12 @@ Things you may want to cover:
 ## Notes
 ~~~shell
 gem install mysql2 --platform=ruby -- --with-mysql-dir=D:\mysql-5.7.37-winx64\mysql-connector-c++-noinstall-1.1.13-winx64
+rails db:create
+rails db:migrate
+~~~
+
+~~~shell
+rails generate sorcery:install user_activation remember_me --only-submodules
+rails g rspec:install
+rails g controller admin::categories new index
 ~~~

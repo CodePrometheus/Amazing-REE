@@ -14,6 +14,7 @@ module B2cSupermarket
     config.generators do |generator|
       generator.assets false
       generator.test_framework false
+      generator.skip_routes true
     end
 
     # Configuration for the application, engines, and railties goes here.

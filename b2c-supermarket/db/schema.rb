@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_143953) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["status", "category_id"], name: "index_products_on_status_and_category_id"
+    t.index %w[status category_id], name: "index_products_on_status_and_category_id"
     t.index ["title"], name: "index_products_on_title"
     t.index ["uuid"], name: "index_products_on_uuid", unique: true
   end
