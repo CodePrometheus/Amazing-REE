@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_21_005232) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_21_143953) do
+  create_table "categories", charset: "utf8mb3", force: :cascade do |t|
+    t.string "title"
+    t.integer "weight", default: 0
+    t.integer "products_counter", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["title"], name: "index_categories_on_title"
+  end
+
+  create_table "products", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "category_id"
+    t.string "title"
+    t.string "status", default: "off"
+    t.integer "amount", default: 0
+    t.string "uuid"
+    t.decimal "msrp", precision: 10, scale: 2
+    t.decimal "price", precision: 10, scale: 2
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index %w[status category_id], name: "index_products_on_status_and_category_id"
+    t.index ["title"], name: "index_products_on_title"
+    t.index ["uuid"], name: "index_products_on_uuid", unique: true
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
