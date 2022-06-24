@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).
       permit(:email, :password, :password_confirmation))
+    @user.uuid = session[:user_uuid] # 关联 cookie ～ MySQL
 
     if @user.save
       flash[:notice] = "sign in successfully, please login"
