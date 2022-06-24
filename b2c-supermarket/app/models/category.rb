@@ -9,9 +9,19 @@ class Category < ApplicationRecord
 
   has_ancestry orphan_strategy: :destroy # 级联关系 一级删除后二级自动删除
 
-  has_many :products, dependent: :destroy
+  has_many :products, dependent: :destroy # 对应下面的商品
 
   before_validation :correct_ancestry
+
+  def self.grouped_data
+    # stream
+    self.roots.order("weight desc").inject([]) do |res, parent|
+      row = []
+      row << parent
+      row << parent.children.order("weight desc")
+      res << row
+    end
+  end
 
   private
 
