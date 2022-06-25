@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_24_135315) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_25_073803) do
+  create_table "addresses", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "address_type"
+    t.string "contact_name"
+    t.string "cellphone"
+    t.string "address"
+    t.string "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "address_type"], name: "index_addresses_on_user_id_and_address_type"
+  end
+
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.integer "weight", default: 0
@@ -79,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_135315) do
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
     t.string "uuid"
+    t.integer "default_address_id"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
