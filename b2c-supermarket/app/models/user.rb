@@ -18,9 +18,16 @@ class User < ApplicationRecord
   validates_length_of :password, message: "Password must be at least 6 characters long", minimum: 6,
                       if: :need_validate_password
 
-  def GetNameFromEmail
+  def get_name_from_email
     self.email.split('@').first
   end
+
+  has_many :addresses, -> {
+    where(address_type: Address::AddressType::User).
+      order("id desc")
+  }
+
+  belongs_to :default_address, class_name: :Address
 
   private
 

@@ -27,4 +27,11 @@ class ApplicationController < ActionController::Base
   def update_browser_uuid(uuid)
     session[:user_uuid] = cookies.permanent['user_uuid'] = uuid
   end
+
+  def auth_user
+    unless logged_in?
+      flash[:notice] = "not logged in"
+      redirect_to new_session_path
+    end
+  end
 end

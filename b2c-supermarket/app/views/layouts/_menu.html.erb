@@ -30,7 +30,7 @@
           <li><a href="<%= new_user_path %>">注册</a></li>
           <li><a href="<%= new_session_path %>">登录</a></li>
         <% else %>
-          <li><a href="#">Welcome, <%= current_user.GetNameFromEmail %></a></li>
+          <li><a href="#">Welcome, <%= current_user.get_name_from_email %></a></li>
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
         <% end -%>
         <li class="dropdown">

@@ -19,4 +19,11 @@ Rails.application.routes.draw do
   resources :products, only: [:show]
 
   resources :shopping_carts
+
+  resources :addresses do
+    member do
+      put :set_default_address
+    end
+  end
+  resources :orders
 end

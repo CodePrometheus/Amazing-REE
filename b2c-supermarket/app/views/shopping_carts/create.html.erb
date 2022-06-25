@@ -24,11 +24,15 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button"
-                class="btn btn-default"
-                data-dismiss="modal">
-          继续购物
-        </button>
+        <div>
+          <button
+            type="button"
+            class="btn btn-default go-on-shopping-btn"
+            data-dismiss="modal"
+          >
+            继续购物
+          </button>
+        </div>
         <%= link_to "查看购物车",
                     shopping_carts_path,
                     class: "btn btn-danger"
