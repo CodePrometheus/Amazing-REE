@@ -26,4 +26,6 @@ Rails.application.routes.draw do
     end
   end
   resources :orders
+
+  resources :payments, only: [:index]
 end

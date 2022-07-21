@@ -27,6 +27,8 @@ class User < ApplicationRecord
       order("id desc")
   }
 
+  has_many :orders # 订单
+
   belongs_to :default_address, class_name: :Address
 
   private

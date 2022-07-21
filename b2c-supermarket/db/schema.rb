@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_25_073803) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_26_152901) do
   create_table "addresses", charset: "utf8mb3", force: :cascade do |t|
     t.integer "user_id"
     t.string "address_type"
@@ -32,6 +32,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_073803) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
     t.index ["title"], name: "index_categories_on_title"
+  end
+
+  create_table "orders", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "address_id"
+    t.string "order_no"
+    t.integer "amount"
+    t.decimal "total_money", precision: 10, scale: 2
+    t.datetime "payment_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_no"], name: "index_orders_on_order_no", unique: true
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "product_images", charset: "utf8mb3", force: :cascade do |t|
